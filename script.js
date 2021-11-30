@@ -2,6 +2,8 @@
 let count = 16;
 // total number of blocks based on the selected count
 let total = count * count;
+let color = '#000000';
+
 
 const container = document.querySelector('#container');
 
@@ -26,7 +28,7 @@ function loadContainer(){
         block.style.width = percentage;
         block.classList.add('block');
         block.addEventListener('mouseover', () =>{
-            block.style.backgroundColor = 'black';
+            block.style.backgroundColor = color;
         });
         container.appendChild(block);
         getCount();
@@ -50,7 +52,10 @@ function resetContainer(){
         block.remove();
     });
     getCount();
-    loadContainer()
+    loadContainer();
+
+    let colorPicked = document.getElementById('color');
+    color = colorPicked.value;
 }
 
 loadContainer();
