@@ -29,15 +29,33 @@ function loadContainer(){
             block.style.backgroundColor = 'black';
         });
         container.appendChild(block);
+        getCount();
     }
+}
+
+function getCount(){
+    const slider = document.getElementById('blockRange');
+    const num = document.getElementById('slideCount');
+    let numBlocks = slider.value;
+    num.innerHTML = numBlocks;
+    // updates count and total count of the blocks
+    count = numBlocks;
+    total = numBlocks * numBlocks;
 }
 
 
 function resetContainer(){
     const blocks = document.querySelectorAll('.block');
     blocks.forEach((block) => {
-        block.style.backgroundColor = 'white';
+        block.remove();
     });
+    getCount();
+    loadContainer()
 }
 
 loadContainer();
+const slider = document.getElementById('blockRange');
+const num = document.getElementById('slideCount');
+slider.oninput = function() {
+    num.innerHTML = this.value;
+}
