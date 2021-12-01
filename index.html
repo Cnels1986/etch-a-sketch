@@ -17,8 +17,17 @@
 			<p id="slideCount"></p>
 			<input type="range" min='16' max='64' value='16' id='blockRange' />
 		</div>
+
+		<div id="optionsContainer">
+			<button type="button" name="normal" id="normBut" class="toggled btn" value="1">Normal</button>
+			<button type="button" name="grayscale" id="grayBut" class="btn" value='2'>Grayscale</button>
+			<button type="button" name="rainbow" id="rainbowBut" class="btn" value="3">Rainbow</button>
+			<button type="button" name="eraser" id="eraserBut" class="btn" value='4'>Eraser</button>
+			<button type="button" name="reset" id="reset" class="btnStyle">Clear</button>
+			<input type="color" id="color"/>
+		</div>
 		<div id="container"></div>
-		<button type="button" name="reset" id="reset">Reset</button>
-		<input type="color" id="color"/>
+
+		<footer>&copy Chris Nelson 2021</footer>
 	</body>
 </html>
