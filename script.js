@@ -53,20 +53,12 @@ function resetContainer(){
     });
     getCount();
     loadContainer();
-
-    let colorPicked = document.getElementById('color');
-    color = colorPicked.value;
 }
 
 const colorValue = document.getElementById('color')
 colorValue.oninput = function() {
         color = colorValue.value;
-        console.log(color);
 };
-// colorValue.addEventListener('click', () => {
-//     color = colorValue.value;
-//     console.log(colorValue.value);
-// });
 
 loadContainer();
 
@@ -75,4 +67,7 @@ const slider = document.getElementById('blockRange');
 const num = document.getElementById('slideCount');
 slider.oninput = function() {
     num.innerHTML = this.value;
+};
+slider.onchange = function(){
+    resetContainer();
 };
