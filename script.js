@@ -38,7 +38,12 @@ function loadContainer(){
         block.style.width = percentage;
         block.classList.add('block');
         block.addEventListener('mouseover', () =>{
-            block.style.backgroundColor = color;
+            if(modeSelected == 3){
+                rainbows(block);
+            }
+            else{
+                block.style.backgroundColor = color;
+            }
         });
         container.appendChild(block);
         getCount();
@@ -75,31 +80,40 @@ function changeMode(mode){
         });
         switch(mode){
             case '1':
-            const a = document.getElementById('normBut');
-            a.classList.add('toggled');
-            modeSelected = 1;
-            const colorValue = document.getElementById('color');
-            color = colorValue.value;
-            break;
+                const a = document.getElementById('normBut');
+                a.classList.add('toggled');
+                modeSelected = 1;
+                const colorValue = document.getElementById('color');
+                color = colorValue.value;
+                break;
             case '2':
-            const b = document.getElementById('grayBut');
-            b.classList.add('toggled');
-            modeSelected = 2;
-            console.log('test');
-            break;
+                const b = document.getElementById('grayBut');
+                b.classList.add('toggled');
+                modeSelected = 2;
+                console.log('test');
+                break;
             case '3':
-            const c = document.getElementById('rainbowBut');
-            c.classList.add('toggled');
-            modeSelected = 3;
-            break;
+                const c = document.getElementById('rainbowBut');
+                c.classList.add('toggled');
+                modeSelected = 3;
+                break;
             case '4':
-            const d = document.getElementById('eraserBut');
-            d.classList.add('toggled');
-            modeSelected = 4;
-            color = '#ffffff';
+                const d = document.getElementById('eraserBut');
+                d.classList.add('toggled');
+                modeSelected = 4;
+                color = '#ffffff';
             break;
         }
     }
+}
+
+function rainbows(block){
+    let red = Math.floor(Math.random() * 255 + 1);
+    let green = Math.floor(Math.random() * 255 + 1);
+    let blue = Math.floor(Math.random() * 255 + 1);
+    let newColor = 'rgb(' + red + ',' + green + ',' + blue + ')'
+    console.log(newColor);
+    block.style.backgroundColor = newColor;
 }
 
 // updates the color picker's hex value to change what colors the divs turn to
