@@ -41,6 +41,23 @@ function loadContainer(){
             if(modeSelected == 3){
                 rainbows(block);
             }
+            else if(modeSelected == 2){
+                let test = block.style.backgroundColor;
+                if(test.length == 18 && test != 'rgba(0, 0, 0, 0.9)')
+                {
+                    let opacity = test.slice(14,17);
+                    let newOpacity = parseFloat(opacity) + .1;
+                    let newColor = test.replace(opacity, newOpacity.toString());
+                    block.style.backgroundColor = newColor;
+                }
+                else if(test == 'rgba(0, 0, 0, 0.9)'){
+                    block.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+                }
+                else{
+                    block.style.backgroundColor = 'rgba(0,0,0,.1)';
+                }
+
+            }
             else{
                 block.style.backgroundColor = color;
             }
@@ -90,7 +107,7 @@ function changeMode(mode){
                 const b = document.getElementById('grayBut');
                 b.classList.add('toggled');
                 modeSelected = 2;
-                console.log('test');
+                color = 'rgba(0,0,0,.1)';
                 break;
             case '3':
                 const c = document.getElementById('rainbowBut');
@@ -107,12 +124,12 @@ function changeMode(mode){
     }
 }
 
+// randomly generates 3 numbers between 0 and 255 and concats them into a rbg() value to change the div's color to
 function rainbows(block){
     let red = Math.floor(Math.random() * 255 + 1);
     let green = Math.floor(Math.random() * 255 + 1);
     let blue = Math.floor(Math.random() * 255 + 1);
     let newColor = 'rgb(' + red + ',' + green + ',' + blue + ')'
-    console.log(newColor);
     block.style.backgroundColor = newColor;
 }
 
@@ -136,4 +153,5 @@ slider.oninput = function() {
 slider.onchange = function(){
     num.innerHTML = this.value + " x " + this.value;
     resetContainer();
+    changeMode(1);
 };
